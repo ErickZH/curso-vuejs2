@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<body>
+	<div id="app" class="container">
+		<div class="welcome" v-html="name">
+			
+		</div>
+
+		<footer class="footer">
+			<p>&copy; 2017 Erickzh</p>
+		</footer>
+	</div>
+
+	<script src="https://unpkg.com/vue"></script>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: ".welcome",
+			data: {
+				name: '<h1>Erick</h1>',
+				team: true,
+				project: 'ErickZH'
+			},
+			computed: {
+				reversedName: function(){
+					return this.name.split('').reverse().join('');
+				}
+			}
+		});
+	</script>	
+</body>
+</html>

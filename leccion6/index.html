@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js - Lección 6</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<body>
+	<div id="app" class="container">
+    {{ $data }}
+		<!-- required -->
+        <h4>¿Has trabajado con Vue.js?</h4>
+        <div class="radio">
+          	<label class="radio-inline">
+            	<input type="radio" v-model="vue.exp" :value="true"> Sí
+          	</label>
+          	<label class="radio-inline">
+            	<input type="radio" v-model="vue.exp" :value="false"> No
+          	</label>
+        </div>
+
+        <template v-if="vue.exp">
+            <!-- Si la respuesta es sí -->
+            <div class="form-group">
+                <label for="vue_years">¿Cuantos años de experiencia tienes con Vue?</label>
+                <input type="number" v-model="vue.years" class="form-control">
+            </div>
+
+            <!-- Si tiene un año de experiencia o menos -->
+            <div v-if="vue.years < 2" class="form-group">
+                <label for="vue_years">¿Qué te motivó a aprender Vue?</label>
+                <textarea class="form-control" rows="4" v-model="vue.description"></textarea>
+            </div>
+
+            <!-- Si ha trabajado dos años o más -->
+            <div v-else class="form-group">
+                <label for="vue_years">Cuéntanos tu experiencia con Vue.js</label>
+                <textarea class="form-control" rows="4" v-model="vue.description"></textarea>
+            </div>
+            <div v-if="vue.description == ''">
+                <p class="text-danger">Escribe una descripción.</p>
+            </div>
+        </template>
+		<footer class="footer">
+			<p>&copy; 2017 Erickzh</p>
+		</footer>
+	</div>
+
+	<script src="https://unpkg.com/vue"></script>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#app",
+			data: {
+                vue: {
+                  exp: null,
+                  years: 0,
+                  description: ''
+                }
+			}
+		});
+	</script>	
+</body>
+</html>
