@@ -27,8 +27,9 @@
             <!-- Si tiene un año de experiencia o menos -->
             <!-- <div v-if="vue.years < 2" 
                 :class="'form-group' + (descriptionError ? ' has-error' : '')">-->
-            <div v-if="vue.years < 2" 
-                :class="'form-group' + (descriptionError ? ' has-error' : '')">
+            <div v-if="vue.years < 2"
+                class="form-group"
+                :class="{ 'has-error': descriptionError}">
                 <label>¿Qué te motivó a aprender Vue?</label>
                 <textarea class="form-control" rows="4" v-model="vue.description"></textarea>
                 <p v-if="descriptionError != ''" class="help-block">

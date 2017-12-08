@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<body>
+	<div id="app" class="container">
+
+		<ul>
+			<li v-for="task in tasks">{{task.title}}</li>
+		</ul>
+
+		<!--<input type="text" 
+		class="form-control" 
+		v-model="new_task" 
+		v-on:keyup.enter="addTask">
+		<button class="btn btn-primary" v-on:click="addTask">Crear tarea</button>-->
+		<form @submit.prevent="addTask">
+			<input type="text" v-model="new_task" class="form-control">
+			<button class="btn btn-primary">Crear tarea</button>
+		</form>
+
+
+
+
+
+		<footer class="footer">
+			<p>&copy; 2017 Erickzh</p>
+		</footer>
+	</div>
+
+	<script src="https://unpkg.com/vue"></script>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				new_task: '',
+				tasks: [
+					{
+						title: 'Aprender Vue.js',
+						pending: true
+					},
+					{
+						title: 'Aprender Django',
+						pending: true
+					},
+					{
+						title: 'Aprender Angular 5',
+						pending: true
+					}
+				]
+			},
+			methods:{
+				addTask: function(event){
+					
+					this.tasks.push({
+						title: this.new_task, 
+						pending: true
+					});
+
+					this.new_task = '';
+				}
+			}
+		});
+	</script>	
+</body>
+</html>
