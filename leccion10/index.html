@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js 2</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="app" class="container">
+		Bienvenido {{ name | title('Mr') | upper}}
+
+		<p>{{ 1000.32 | money }}</p>
+	</div>
+
+	<script src="https://unpkg.com/vue"></script>
+	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+	<script>
+	// filtro global
+		Vue.filter('title', function(value, title) {
+					return title + '. ' + value;
+			});
+
+		Vue.filter('money', function(value) {
+			return numeral(value).format('$0,0.00');
+		});
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				name: 'Erick'
+			},
+			filters: {
+				upper: function(value) {
+					return value.toUpperCase();
+				}
+			}
+		});
+	</script>
+</body>
+</html>
