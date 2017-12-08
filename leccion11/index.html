@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js 2</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="app" class="container">
+		<br>
+		<input type="text" v-model="name" class="form-control">
+		<input type="text" v-model="email" class="form-control">
+		<hr>
+		Bienvenido {{ name | reversed }}
+		<hr>
+		Utilizando metodo
+		<p>{{ reverse(name) }}</p>
+		<hr>
+		Utilizando una computed properties
+		<p>{{ reverseName }}</p>
+	</div>
+
+	<script src="https://unpkg.com/vue"></script>
+
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				name: 'Erick',
+				email: 'zaraterick@outlook.com'
+			},
+			computed: {
+				reverseName: function() {
+					console.log('Computed');
+					//return this.name.split('').reverse().join('');
+					return this.name + ' ' + Math.random();
+				}
+			},
+			methods: {
+				// alterar items de nuestro sistema
+				reverse: function(value) {
+					console.log('Method');
+					return value.split('').reverse().join('');
+				}
+			},
+			filters: {
+				reversed: function(value) {
+					console.log('Filter');
+					return value.split('').reverse().join('');
+				}
+			}
+		});
+	</script>
+</body>
+</html>
